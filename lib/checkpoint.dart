@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// Possible status values for checkpoint entrance and exit directions.
 enum CheckpointStatus { open, closed, crowded }
 
 extension CheckpointStatusExtension on CheckpointStatus {

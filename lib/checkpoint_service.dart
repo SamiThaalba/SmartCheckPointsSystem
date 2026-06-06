@@ -11,7 +11,6 @@ class CheckpointService {
   final FirebaseStorage _storage = FirebaseStorage.instance;
   static const String _collection = 'checkpoints';
 
-  /// Stream of all checkpoints (real-time)
   Stream<List<Checkpoint>> getCheckpoints() {
     return _firestore
         .collection(_collection)
@@ -22,7 +21,6 @@ class CheckpointService {
     });
   }
 
-  /// Add a new checkpoint (admin only)
   Future<void> addCheckpoint({
     required String name,
     required double latitude,
@@ -59,7 +57,6 @@ class CheckpointService {
     );
   }
 
-  /// Update entrance and/or exit status
   Future<void> updateStatus({
     required String checkpointId,
     CheckpointStatus? entranceStatus,
@@ -80,15 +77,13 @@ class CheckpointService {
     await _firestore.collection(_collection).doc(checkpointId).update(updates);
   }
 
-  /// Delete a checkpoint (admin only)
   Future<void> deleteCheckpoint(String checkpointId) async {
     await _firestore.collection(_collection).doc(checkpointId).delete();
   }
 
-  /// Seed some demo checkpoints (run once for testing)
   Future<void> seedDemoData() async {
     final existing = await _firestore.collection(_collection).limit(1).get();
-    if (existing.docs.isNotEmpty) return; // already seeded
+    if (existing.docs.isNotEmpty) return;
 
     final demos = [
       {'name': 'Checkpoint Alpha', 'latitude': 31.7054, 'longitude': 35.2024},

@@ -174,6 +174,63 @@ class _AddCheckpointDialogState extends State<AddCheckpointDialog> {
                   ),
                 ],
               ),
+              const SizedBox(height: 12),
+              InkWell(
+                onTap: _isSaving ? null : _pickImage,
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  width: double.infinity,
+                  height: 132,
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey.shade50,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.blueGrey.shade100),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: _selectedImageBytes == null
+                      ? const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.add_photo_alternate_outlined,
+                              color: Color(0xFF1565C0),
+                              size: 30,
+                            ),
+                            SizedBox(height: 8),
+                            Text('Add checkpoint photo'),
+                          ],
+                        )
+                      : Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            Image.memory(
+                              _selectedImageBytes!,
+                              fit: BoxFit.cover,
+                            ),
+                            Positioned(
+                              right: 8,
+                              bottom: 8,
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 4,
+                                  ),
+                                  child: Text(
+                                    'Change',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                ),
+              ),
             ],
           ),
         ),

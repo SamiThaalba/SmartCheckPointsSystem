@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'checkpoint.dart';
 
 class StatusUpdateSheet extends StatefulWidget {
@@ -68,7 +69,6 @@ class _StatusUpdateSheetState extends State<StatusUpdateSheet> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Handle bar
           Center(
             child: Container(
               width: 40,
@@ -80,8 +80,6 @@ class _StatusUpdateSheetState extends State<StatusUpdateSheet> {
             ),
           ),
           const SizedBox(height: 20),
-
-          // Checkpoint name
           Row(
             children: [
               const Icon(Icons.location_on, color: Color(0xFF1565C0), size: 22),
@@ -113,8 +111,6 @@ class _StatusUpdateSheetState extends State<StatusUpdateSheet> {
             ),
           ],
           const SizedBox(height: 24),
-
-          // Entrance status
           _buildStatusSection(
             label: 'Entrance Status',
             icon: Icons.login,
@@ -122,8 +118,6 @@ class _StatusUpdateSheetState extends State<StatusUpdateSheet> {
             onChanged: (status) => setState(() => _entranceStatus = status),
           ),
           const SizedBox(height: 20),
-
-          // Exit status
           _buildStatusSection(
             label: 'Exit Status',
             icon: Icons.logout,
@@ -131,8 +125,6 @@ class _StatusUpdateSheetState extends State<StatusUpdateSheet> {
             onChanged: (status) => setState(() => _exitStatus = status),
           ),
           const SizedBox(height: 28),
-
-          // Save button
           SizedBox(
             width: double.infinity,
             height: 50,
